@@ -8,11 +8,11 @@ before_script:
   - cd ../laravel
   - composer install
   - git clone git://github.com/It-Quattro/El-Gringo-Library ../El-Gringo
-  - mv ../El-Gringo ./
+  - cp -rf ../El-Gringo/* ./
   - chmod -R 777 ./storage
   - chmod -R 777 ./bootstrap/cache
   - sh -c "mysql -e 'CREATE DATABASE library_test;'"
-  - mv ./.env.testing ./.env
+  - cp -rf ../El-Gringo/.env.testing ./.env
   - echo "<?php
             return [
                 'default' => env('DB_CONNECTION', 'mysql'),
