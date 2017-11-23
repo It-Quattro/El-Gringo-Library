@@ -4,7 +4,9 @@ php:
   - 7.0
 
 before_script:
-  - pear install pear/PHP_CodeSniffer
+  - composer global require install "squizlabs/php_codesniffer=*"
+  - composer gloabl config bin-dir --absolute
+  - composer global install
   - phpenv rehash
   - git clone --depth 1 git://github.com/laravel/laravel ../laravel
   - cd ../laravel
