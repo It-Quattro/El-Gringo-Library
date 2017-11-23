@@ -5,6 +5,7 @@ php:
 
 before_script:
   - pear install pear/PHP_CodeSniffer
+  - phpenv rehash
   - git clone --depth 1 git://github.com/laravel/laravel ../laravel
   - cd ../laravel
   - composer install
