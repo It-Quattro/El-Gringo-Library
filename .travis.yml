@@ -5,7 +5,7 @@ php:
 
 before_script:
   - composer global require "squizlabs/php_codesniffer=*"
-  - composer gloabl config bin-dir --absolute
+  - composer global config bin-dir --absolute
   - composer global install
   - phpenv rehash
   - git clone --depth 1 git://github.com/laravel/laravel ../laravel
