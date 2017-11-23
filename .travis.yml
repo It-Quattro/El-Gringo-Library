@@ -64,7 +64,7 @@ script:
   - php phploc.phar ./
   - php phpcpd.phar ./app/Http/Controllers
   - php phpmd.phar ./ xml codesize
-  - php pdepend.phar --summary-xml=/tmp/sum.xml ./app/Http/Controllers/
+  - php pdepend.phar --summary-xml=/tmp/sum.xml ./app/Http/Controllers/ 
 
 
 
