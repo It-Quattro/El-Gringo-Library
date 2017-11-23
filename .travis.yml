@@ -6,8 +6,10 @@ php:
 before_script:
   - git clone --depth 1 git://github.com/laravel/laravel ../laravel
   - cd ../laravel
-  - wget http://pear.phpunit.de/get/phploc.phar
-  - chmod +x phploc.phar
+  # - wget http://pear.phpunit.de/get/phploc.phar
+  # - chmod +x phploc.phar
+  - pear config-set auto_discover 1
+  - pear install pear.phpunit.de/phploc
   - composer require "squizlabs/php_codesniffer=2.9.0"
   - composer install
   - git clone git://github.com/It-Quattro/El-Gringo-Library ../El-Gringo
@@ -55,7 +57,8 @@ before_script:
 script:
   - ./vendor/bin/phpunit
   - ./vendor/bin/phpcs --standard=../codeSniffer/Standards/Laravel/ ./app/Http/Controllers/
-  - php phploc.phar ./app
+  # - php phploc.phar ./app
+  - phploc ./app
 
 
 
