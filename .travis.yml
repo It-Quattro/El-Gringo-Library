@@ -52,7 +52,7 @@ before_script:
 
 script:
   - ./vendor/bin/phpunit
-  - ./vendor/bin/phpcs --standard=../codeSniffer/Standards/Laravel/ ./app/Http/Controllers/
+  - php ./vendor/bin/phpcs --standard=../codeSniffer/Standards/Laravel/ ./app/Http/Controllers/
 
 
 
