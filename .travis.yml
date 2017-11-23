@@ -12,6 +12,8 @@ before_script:
   - chmod +x phpcpd.phar
   - wget http://static.phpmd.org/php/2.1.3/phpmd.phar
   - chmod +x phpdox.phar
+  - wget http://static.pdepend.org/php/latest/pdepend.phar
+  - chmod +x pdepend.phar
   - composer require "squizlabs/php_codesniffer=2.9.0"
   - composer install
   - git clone git://github.com/It-Quattro/El-Gringo-Library ../El-Gringo
@@ -62,6 +64,7 @@ script:
   - php phploc.phar ./
   - php phpcpd.phar ./app/Http/Controllers
   - php phpmd.phar ./ xml codesize
+  - php pdepend.phar --summary-xml=/tmp/sum.xml ./app/Http/Controllers/
 
 
 
