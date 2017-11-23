@@ -4,10 +4,7 @@ php:
   - 7.0
 
 before_script:
-  - composer global require "squizlabs/php_codesniffer=*"
-  - composer global config bin-dir --absolute
-  - composer global install
-  - phpenv rehash
+  - git clone https://github.com/squizlabs/PHP_CodeSniffer.git ../phpcs
   - git clone --depth 1 git://github.com/laravel/laravel ../laravel
   - cd ../laravel
   - composer install
@@ -55,7 +52,7 @@ before_script:
 
 script:
   - ./vendor/bin/phpunit
-  - phpcs --standard=../codeSniffer/Standards/Laravel/ ./app/Http/Controllers/
+  - php bin/phpcs --standard=../codeSniffer/Standards/Laravel/ ./app/Http/Controllers/
 
 
 
