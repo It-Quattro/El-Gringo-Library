@@ -1,0 +1,72 @@
+language: php
+
+php:
+  - 7.0
+
+before_script:
+  - git clone --depth 1 git://github.com/laravel/laravel ../laravel
+  - cd ../laravel
+  - composer install
+  - git clone git://github.com/It-Quattro/El-Gringo-Library ../El-Gringo
+  - mv ../El-Gringo ./
+  - chmod -R 777 ./storage
+  - chmod -R 777 ./bootstrap/cache
+  - sh -c "mysql -e 'CREATE DATABASE library_test;'"
+  - echo "APP_NAME=Laravel
+          APP_ENV=local
+          APP_KEY=base64:tbe5AEdQmbQ3+T6QemKLbT12e0LcjJx5+8+uvLO/0tU=
+          APP_DEBUG=true
+          APP_LOG_LEVEL=debug
+          APP_URL=http://localhost
+
+          DB_CONNECTION=mysql
+          DB_HOST=127.0.0.1
+          DB_PORT=3306
+          DB_DATABASE=library_test
+          DB_USERNAME=travis
+
+          BROADCAST_DRIVER=log
+          CACHE_DRIVER=file
+          SESSION_DRIVER=file
+          SESSION_LIFETIME=120
+          QUEUE_DRIVER=sync" > ./.env
+  - echo "<?php
+            return [
+                'default' => env('DB_CONNECTION', 'mysql'),
+                'connections' => [
+                    'mysql' => [
+                        'driver' => 'mysql',
+                        'host' => env('DB_HOST', '127.0.0.1'),
+                        'port' => env('DB_PORT', '3306'),
+                        'database' => env('DB_DATABASE', 'library'),
+                        'username' => env('DB_USERNAME', 'root'),
+                        'password' => env('DB_PASSWORD', '0000'),
+                        'unix_socket' => env('DB_SOCKET', ''),
+                        'charset' => 'utf8mb4',
+                        'collation' => 'utf8mb4_unicode_ci',
+                        'prefix' => '',
+                        'strict' => true,
+                        'engine' => null,
+                    ]
+                ],
+                'migrations' => 'migrations',
+                'redis' => [
+
+                    'client' => 'predis',
+
+                    'default' => [
+                        'host' => env('REDIS_HOST', '127.0.0.1'),
+                        'password' => env('REDIS_PASSWORD', null),
+                        'port' => env('REDIS_PORT', 6379),
+                        'database' => 0,
+                    ],
+
+                ],
+
+            ];" > ./config/database.php
+
+script:
+  - ./vendor/bin/phpunit
+
+
+
