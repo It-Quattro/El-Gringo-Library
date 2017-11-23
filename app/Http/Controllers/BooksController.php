@@ -41,9 +41,9 @@ class BooksController extends Controller
 		 */
 		public function create()
 		{
-			if($_POST['name'] != "" && $_POST['description'] != "" &&  $_POST['author'] != "")
+			if ($_POST['name'] != "" && $_POST['description'] != "" &&  $_POST['author'] != "")
 			{
-				if($_POST['available'] == "true" || $_POST['available'] == "1")
+				if ($_POST['available'] == "true" || $_POST['available'] == "1")
 				{
 					Books::create([
 						'name' => $_POST['name'],
