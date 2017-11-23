@@ -7,7 +7,7 @@ before_script:
   - git clone --depth 1 git://github.com/laravel/laravel ../laravel
   - cd ../laravel
   - composer require "squizlabs/php_codesniffer=2.9.0"
-  - composer require "phploc/phploc=*"
+  - composer require --dev phploc/phploc
   - composer install
   - git clone git://github.com/It-Quattro/El-Gringo-Library ../El-Gringo
   - cp -rf ../El-Gringo/* ./
