@@ -47,8 +47,7 @@ before_script:
                 ],
 
             ];" > ./config/database.php
-  - git clone git://github.com/antonioribeiro/laravelcs LaravelCodeSniffer ../codeSniffer
-  - 
+  - git clone git://github.com/antonioribeiro/laravelcs ../codeSniffer
 
 script:
   - ./vendor/bin/phpunit
