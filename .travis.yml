@@ -4,6 +4,7 @@ php:
   - 7.0
 
 before_script:
+  - apt-get install phpcs
   - git clone --depth 1 git://github.com/laravel/laravel ../laravel
   - cd ../laravel
   - composer install
