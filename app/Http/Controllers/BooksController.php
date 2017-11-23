@@ -21,12 +21,13 @@ class BooksController extends Controller
 		 */
 		public function index()
 		{
-			if (Auth::check()) {
+			if (Auth::check())
+			{
 				$books = DB::table('books')->distinct()->get();
 				return view('library/books', [
 						'booksBDD' => $books
 				]);
-			}else{
+			} else {
 				return view('welcome');
 			}
 
@@ -40,15 +41,17 @@ class BooksController extends Controller
 		 */
 		public function create()
 		{
-			if($_POST['name'] != "" && $_POST['description'] != "" &&  $_POST['author'] != ""){
-				if($_POST['available'] == "true" || $_POST['available'] == "1"){
+			if($_POST['name'] != "" && $_POST['description'] != "" &&  $_POST['author'] != "")
+			{
+				if($_POST['available'] == "true" || $_POST['available'] == "1")
+				{
 					Books::create([
 						'name' => $_POST['name'],
 						'description' =>  $_POST['description'],
 						'author' =>  $_POST['author'],
 						'available' =>  true,
 					]);
-				}else if($_POST['available'] == "false" || $_POST['available'] == "0"){
+				} else if ($_POST['available'] == "false" || $_POST['available'] == "0"){
 					Books::create([
 						'name' => $_POST['name'],
 						'description' =>  $_POST['description'],
